@@ -45,7 +45,7 @@ private LocalDate fecha;
     abstract  double precioFinal();
 
 
-    //Defino el metodo descripcion: nmo recibe nada, devuelve texto
+    //Defino el metodo descripcion: no recibe nada, devuelve texto
     abstract  String descripcion();
 
 
