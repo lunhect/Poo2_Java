@@ -1,6 +1,14 @@
 package es.fplumara.dam1.restaurante;
 
+import java.util.List;
+
 public class Hamburguesa extends ProductoMenu, implements Personalizable {
+
+   //Alm
+    private List<String> nombresExtras;
+    private List<Double> costesExtras;
+
+
 
     private String tipoCarne;
 
@@ -16,11 +24,26 @@ public class Hamburguesa extends ProductoMenu, implements Personalizable {
         }
 
 
+
     }
 
 
     @Override
     public void addExtra(String nombreExtra, double coste) {
+   if (nombreExtra == null || nombreExtra.isBlank()) {
+      throw new IllegalArgumentException("El nombreExtra no puede ser ni nulo ni vacío");
+
+   }
+
+   if (coste <= 0) {
+
+       throw new IllegalArgumentException("El coste debe ser mayor a cero!");
+
+   }
+
+  //guardar internamente
+
+
 
     }
 
@@ -31,7 +54,7 @@ public class Hamburguesa extends ProductoMenu, implements Personalizable {
 
     @Override
     String ticketLine() {
-        return "[HAMBURGUESA] <nombre> (carne: <tipoCarne>) | base: <precioBase>€ | extras: <N> | total: <precioFinal>€";
+        return"";
     }
 }
 

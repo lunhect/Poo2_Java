@@ -30,6 +30,10 @@ public  abstract class ProductoMenu {
     }
 
     protected ProductoMenu(String id, String nombre, double precioBase) throws IllegalAccessException {
+     this.id = id;
+     this.nombre =nombre;
+     this.precioBase = precioBase;
+
 
          //
           //El blank sirve como trim + empty
