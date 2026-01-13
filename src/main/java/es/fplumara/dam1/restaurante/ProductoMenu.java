@@ -1,9 +1,9 @@
 package es.fplumara.dam1.restaurante;
 
 public  abstract class ProductoMenu {
-    private String id;
-    private String nombre;
-    private double precioBase;
+    protected String id;
+    protected String nombre;
+    protected double precioBase;
 
     public String getId() {
         return id;

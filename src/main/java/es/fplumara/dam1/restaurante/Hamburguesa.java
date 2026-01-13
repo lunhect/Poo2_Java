@@ -1,13 +1,13 @@
 package es.fplumara.dam1.restaurante;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Hamburguesa extends ProductoMenu, implements Personalizable {
+public class Hamburguesa extends ProductoMenu implements Personalizable {
 
-   //Alm
-    private List<String> nombresExtras;
-    private List<Double> costesExtras;
-
+    //Atributo
+    List<String> nombresExtras;
+    List<Double> costesExtras;
 
 
     private String tipoCarne;
@@ -17,6 +17,12 @@ public class Hamburguesa extends ProductoMenu, implements Personalizable {
         super(id, nombre, precioBase);
         this.tipoCarne = tipoCarne;
 
+        //constructor de los Arrays
+
+        nombresExtras = new ArrayList<>();
+        costesExtras = new ArrayList<>();
+
+
         // el blank  en listas es = empty en vez de blank
         if (tipoCarne == null || tipoCarne.isBlank()) {
 
@@ -24,37 +30,45 @@ public class Hamburguesa extends ProductoMenu, implements Personalizable {
         }
 
 
-
     }
 
 
     @Override
     public void addExtra(String nombreExtra, double coste) {
-   if (nombreExtra == null || nombreExtra.isBlank()) {
-      throw new IllegalArgumentException("El nombreExtra no puede ser ni nulo ni vacío");
+        if (nombreExtra == null || nombreExtra.isBlank()) {
+            throw new IllegalArgumentException("El nombreExtra no puede ser ni nulo ni vacío");
 
-   }
+        }
 
-   if (coste <= 0) {
+        if (coste <= 0) {
 
-       throw new IllegalArgumentException("El coste debe ser mayor a cero!");
+            throw new IllegalArgumentException("El coste debe ser mayor a cero!");
 
-   }
+        }
 
-  //guardar internamente
-
+        nombresExtras.add(nombreExtra);
+        costesExtras.add(coste);
 
 
     }
 
-    @Override
-    double precioFinal() {
-        return 0;
-    }
 
     @Override
-    String ticketLine() {
-        return"";
+    public double precioFinal() {
+        double totalExtras = 0; //acumulo precio extras
+
+        for (double coste : costesExtras) {
+            totalExtras += coste;
+        }
+
+        return precioBase + totalExtras;
+    }
+
+
+    @Override
+    public String ticketLine() {
+
+        return "[HAMBURGUESA]" + nombre + "(carne:" + tipoCarne + ")" + "| base:" + precioBase + "€" + "| extras:" + nombresExtras.size() + "| total:" + precioFinal() + "€";
     }
 }
 
