@@ -1,6 +1,6 @@
 package es.fplumara.dam1.restaurante;
 
-public class Postre extends ProductoMenu{
+public class Postre extends ProductoMenu {
 
     private boolean esCasero;
 
@@ -19,13 +19,20 @@ public class Postre extends ProductoMenu{
 
     @Override
     double precioFinal() {
-        return 0;
+
+
+        if (esCasero) {
+            return precioBase + 1.50;
+        } else {
+            return precioBase;
+        }
     }
+
 
     @Override
     String ticketLine() {
-        return "";
+        return "[POSTRE]" + nombre + "(casero:" + (esCasero ? "SI" : "NO") + ")" + "| base: " + precioBase + "€ |" +"total: "  +precioFinal();
     }
-
+                                                    //  esCasero (? "si es casero" + incremento + : "si no" no
 
 }

@@ -43,7 +43,7 @@ public class Ensalada extends ProductoMenu implements Personalizable, AptoPara {
 
 
 
-        return "[ENSALADA]" + nombre +"(tamano:" + tamanoEnsalada + ")" + "| base:" + precioBase + "€" +"| incTam:"  + incrementoTamano +"€" + "| extras:" + nombresExtras.size() + "| total:"+ precioFinal() + "€";
+        return "[ENSALADA]" + nombre +"(tamano:" + tamanoEnsalada + ")" + "| base:" + precioBase + "€" +"| incTam:"  + getTamanoEnsalada() +"€" + "| extras:" + nombresExtras.size() + "| total:"+ precioFinal() + "€";
     }
 
 
